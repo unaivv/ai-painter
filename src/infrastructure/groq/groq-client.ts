@@ -9,7 +9,7 @@ export const complete = async (system: string, user: string): Promise<string> =>
     model: MODEL,
     messages: [
       { role: 'system', content: system },
-      { role: 'user', content: user },
+      { role: 'user', content: `/no_think ${user}` },
     ],
   })
   return response.choices[0]?.message?.content ?? ''
