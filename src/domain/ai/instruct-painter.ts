@@ -12,12 +12,14 @@ const SYSTEM_PROMPT =
   'Return ONLY a JSON array: [{x,y,color}] where x,y are 0-based coordinates and color is a hex string. ' +
   'Use color "" to erase. Return [] if nothing changes. No prose, no markdown, no code blocks.'
 
-const MAX_GENERATION_TOKENS = 1024
-const MAX_DELTA_TOKENS = 256
-const CHARS_PER_TOKEN = 3
+const MAX_TOKENS = 1024
+const TOKENS_PER_PIXEL = 12
 
 const isGridEmpty = (grid: CanvasGrid): boolean =>
   grid.cells.every(row => row.every(c => !c))
+
+const deltaTokenBudget = (grid: CanvasGrid): number =>
+  Math.min(MAX_TOKENS, grid.height * TOKENS_PER_PIXEL * 2)
 
 export const instruct = async (
   grid: CanvasGrid,
@@ -27,10 +29,7 @@ export const instruct = async (
   const ascii = serializeGrid(grid, PICO8_CODES)
   const generating = isGridEmpty(grid)
   const user = `${ascii}\n${generating ? 'Draw' : 'Edit'}: ${instruction}`
-  const paintBudget = Math.ceil((grid.width * (grid.width + 1)) / CHARS_PER_TOKEN)
-  const maxTokens = generating
-    ? MAX_GENERATION_TOKENS
-    : Math.min(MAX_DELTA_TOKENS, paintBudget - 1)
+  const maxTokens = generating ? MAX_TOKENS : deltaTokenBudget(grid)
   const raw = await complete(SYSTEM_PROMPT, user, maxTokens)
   return parseInstructions(raw)
 }

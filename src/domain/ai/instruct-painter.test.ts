@@ -63,14 +63,15 @@ describe('instruct', () => {
     expect(maxTokens).toBeGreaterThanOrEqual(512)
   })
 
-  it('non-empty grid → uses smaller delta token budget', async () => {
+  it('non-empty grid → token budget covers at least a full column of pixels', async () => {
     const { applyInstructions } = await import('@/domain/canvas/CanvasGrid')
-    const grid = applyInstructions(createGrid(16), [{ x: 0, y: 0, color: '#ff004d' }])
+    const size = 16
+    const grid = applyInstructions(createGrid(size), [{ x: 0, y: 0, color: '#ff004d' }])
     const completeMock = makeComplete('[]')
 
-    await instruct(grid, 'change color', completeMock)
+    await instruct(grid, 'draw vertical line', completeMock)
 
     const [, , maxTokens] = completeMock.mock.calls[0]
-    expect(maxTokens).toBeLessThanOrEqual(256)
+    expect(maxTokens).toBeGreaterThanOrEqual(size * 12)
   })
 })
