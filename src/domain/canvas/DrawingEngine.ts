@@ -5,7 +5,8 @@ export const renderToCanvas = (
   ctx: CanvasRenderingContext2D,
   cellSize: number,
 ): void => {
-  ctx.clearRect(0, 0, grid.width * cellSize, grid.height * cellSize)
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(0, 0, grid.width * cellSize, grid.height * cellSize)
 
   for (let row = 0; row < grid.height; row++) {
     for (let col = 0; col < grid.width; col++) {
