@@ -4,7 +4,7 @@ import type { GridSize, PixelInstruction } from '@/domain/canvas/PixelInstructio
 import { parseAsciiGrid } from './parse-ascii-grid'
 import type { Result } from './parse-instructions'
 
-type CompleteFn = (system: string, user: string) => Promise<string>
+type CompleteFn = (system: string, user: string, maxTokens: number) => Promise<string>
 
 const CODE_LEGEND = Object.entries(PICO8_CODES)
   .map(([code, hex]) => `${code}=${hex}`)
@@ -46,6 +46,9 @@ EXAMPLE — a dog on a 16×16 grid (T=tan fur, K=black, D=dark gray, W=white):
 ....KKK.KKK.....
 ................`
 
+const gridOutputTokens = (size: GridSize): number =>
+  Math.ceil((size * (size + 1)) / 3)
+
 export const paint = async (
   prompt: string,
   size: GridSize,
@@ -53,7 +56,7 @@ export const paint = async (
 ): Promise<Result<PixelInstruction[]>> => {
   try {
     const userMessage = `Draw: ${prompt}\n\nOutput the ${size}×${size} grid now. Nothing else.`
-    const raw = await complete(buildSystemPrompt(size), userMessage)
+    const raw = await complete(buildSystemPrompt(size), userMessage, gridOutputTokens(size))
     return parseAsciiGrid(raw, PICO8_CODES)
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'
