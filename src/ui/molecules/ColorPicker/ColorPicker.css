@@ -1,0 +1,32 @@
+.color-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  padding: 10px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.color-picker__swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.1s;
+  position: relative;
+}
+
+.color-picker__swatch:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.color-picker__swatch[aria-pressed='true'] {
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px white;
+}

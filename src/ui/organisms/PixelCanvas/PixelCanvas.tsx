@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+
 import { renderToCanvas } from '@/domain/canvas/DrawingEngine'
 import type { CanvasGrid } from '@/domain/canvas/CanvasGrid'
 
@@ -26,11 +27,13 @@ export const PixelCanvas = ({ grid, cellSize = 12, onCellClick }: Props): JSX.El
   }
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={grid.width * cellSize}
-      height={grid.height * cellSize}
-      onClick={handleClick}
-    />
+    <div className="canvas-wrapper">
+      <canvas
+        ref={canvasRef}
+        width={grid.width * cellSize}
+        height={grid.height * cellSize}
+        onClick={handleClick}
+      />
+    </div>
   )
 }
