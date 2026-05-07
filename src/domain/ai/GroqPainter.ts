@@ -1,4 +1,4 @@
-import { complete } from '@/infrastructure/groq/GroqClient'
+import { complete } from '@/infrastructure/groq/groq-client'
 import { parseInstructions } from './parseInstructions'
 import type { Result } from './parseInstructions'
 import type { GridSize, PixelInstruction } from '@/domain/canvas/PixelInstruction'

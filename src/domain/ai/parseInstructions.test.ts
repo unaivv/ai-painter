@@ -39,6 +39,15 @@ describe('parseInstructions', () => {
     expect(result.ok).toBe(false)
   })
 
+  it('strips <think> tags from reasoning models', () => {
+    const raw = '<think>Let me plan the layout...\nHead at top.</think>\n[{"x":0,"y":0,"color":"#ff004d"}]'
+    const result = parseInstructions(raw)
+    expect(result.ok).toBe(true)
+    if (result.ok) {
+      expect(result.value[0].color).toBe('#ff004d')
+    }
+  })
+
   it('returns error result when parsed value is not an array', () => {
     const result = parseInstructions('{"x":1,"y":2,"color":"#000000"}')
     expect(result.ok).toBe(false)
