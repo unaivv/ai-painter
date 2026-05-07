@@ -24,13 +24,16 @@ export const usePainter = (initialSize: GridSize = 16): PainterState & PainterAc
   const paintPrompt = useCallback(async (prompt: string) => {
     setLoading(true)
     setError(null)
-    const result = await paint(prompt, grid.width as GridSize, PICO8_PALETTE)
-    if (result.ok) {
-      setGrid(prev => applyInstructions(prev, result.value))
-    } else {
-      setError(result.error)
+    try {
+      const result = await paint(prompt, grid.width as GridSize, PICO8_PALETTE)
+      if (result.ok) {
+        setGrid(prev => applyInstructions(prev, result.value))
+      } else {
+        setError(result.error)
+      }
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }, [grid.width])
 
   const reset = useCallback((size: GridSize) => {
