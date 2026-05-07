@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react'
 
 import { createGrid, applyInstructions } from '@/domain/canvas/CanvasGrid'
-import { paint } from '@/domain/ai/groq-painter'
 import { instruct } from '@/domain/ai/instruct-painter'
 import { complete } from '@/infrastructure/groq/groq-client'
 import { PICO8_PALETTE } from '@/domain/palette/pico8'
@@ -22,9 +21,6 @@ type PainterActions = {
   setSelectedColor: (hex: string) => void
 }
 
-const isGridEmpty = (grid: CanvasGrid): boolean =>
-  grid.cells.every(row => row.every(cell => !cell))
-
 export const usePainter = (initialSize: GridSize = 16): PainterState & PainterActions => {
   const [grid, setGrid] = useState<CanvasGrid>(() => createGrid(initialSize))
   const [loading, setLoading] = useState(false)
@@ -43,20 +39,11 @@ export const usePainter = (initialSize: GridSize = 16): PainterState & PainterAc
       setLoading(true)
       setError(null)
       try {
-        if (isGridEmpty(grid)) {
-          const result = await paint(prompt, grid.width, complete)
-          if (result.ok) {
-            setGrid(prev => applyInstructions(createGrid(prev.width), result.value))
-          } else {
-            setError(result.error)
-          }
+        const result = await instruct(grid, prompt, complete)
+        if (result.ok) {
+          setGrid(prev => applyInstructions(prev, result.value))
         } else {
-          const result = await instruct(grid, prompt, complete)
-          if (result.ok) {
-            setGrid(prev => applyInstructions(prev, result.value))
-          } else {
-            setError(result.error)
-          }
+          setError(result.error)
         }
       } finally {
         setLoading(false)

@@ -53,16 +53,24 @@ describe('instruct', () => {
     }
   })
 
-  it('maxTokens is strictly less than paint() budget for same grid size', async () => {
-    const size = 16
-    const grid = createGrid(size)
+  it('empty grid → uses larger generation token budget', async () => {
+    const grid = createGrid(16)
     const completeMock = makeComplete('[]')
 
-    await instruct(grid, 'test', completeMock)
+    await instruct(grid, 'draw a cat', completeMock)
 
-    const paintBudget = Math.ceil((size * (size + 1)) / 3)
     const [, , maxTokens] = completeMock.mock.calls[0]
-    expect(maxTokens).toBeLessThan(paintBudget)
-    expect(maxTokens).toBeGreaterThan(0)
+    expect(maxTokens).toBeGreaterThanOrEqual(512)
+  })
+
+  it('non-empty grid → uses smaller delta token budget', async () => {
+    const { applyInstructions } = await import('@/domain/canvas/CanvasGrid')
+    const grid = applyInstructions(createGrid(16), [{ x: 0, y: 0, color: '#ff004d' }])
+    const completeMock = makeComplete('[]')
+
+    await instruct(grid, 'change color', completeMock)
+
+    const [, , maxTokens] = completeMock.mock.calls[0]
+    expect(maxTokens).toBeLessThanOrEqual(256)
   })
 })
