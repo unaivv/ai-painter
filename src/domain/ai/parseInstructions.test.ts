@@ -39,6 +39,15 @@ describe('parseInstructions', () => {
     expect(result.ok).toBe(false)
   })
 
+  it('extracts JSON array when surrounded by extra text', () => {
+    const raw = 'Here is the pixel art:\n[{"x":0,"y":0,"color":"#ff004d"}]\nHope you like it!'
+    const result = parseInstructions(raw)
+    expect(result.ok).toBe(true)
+    if (result.ok) {
+      expect(result.value[0].color).toBe('#ff004d')
+    }
+  })
+
   it('strips <think> tags from reasoning models', () => {
     const raw = '<think>Let me plan the layout...\nHead at top.</think>\n[{"x":0,"y":0,"color":"#ff004d"}]'
     const result = parseInstructions(raw)
