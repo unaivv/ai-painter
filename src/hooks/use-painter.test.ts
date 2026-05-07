@@ -67,6 +67,19 @@ describe('usePainter — paintPrompt routing', () => {
     expect(instructMock).not.toHaveBeenCalled()
   })
 
+  it('instruct() failure → grid unchanged, error set', async () => {
+    instructMock.mockResolvedValueOnce({ ok: false, error: 'bad delta' })
+
+    const { result } = renderHook(() => usePainter(16))
+    act(() => { result.current.paintCell(0, 0) })
+    const gridBefore = result.current.grid
+
+    await act(async () => { await result.current.paintPrompt('do something') })
+
+    expect(result.current.grid).toBe(gridBefore)
+    expect(result.current.error).toBe('bad delta')
+  })
+
   it('non-empty grid + paintPrompt → instruct() called; paint() NOT called', async () => {
     instructMock.mockResolvedValueOnce({ ok: true, value: [{ x: 0, y: 0, color: '#ff004d' }] })
 

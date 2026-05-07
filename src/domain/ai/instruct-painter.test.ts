@@ -53,13 +53,16 @@ describe('instruct', () => {
     }
   })
 
-  it('passes maxTokens=256 to complete', async () => {
-    const grid = createGrid(16)
+  it('maxTokens is strictly less than paint() budget for same grid size', async () => {
+    const size = 16
+    const grid = createGrid(size)
     const completeMock = makeComplete('[]')
 
     await instruct(grid, 'test', completeMock)
 
+    const paintBudget = Math.ceil((size * (size + 1)) / 3)
     const [, , maxTokens] = completeMock.mock.calls[0]
-    expect(maxTokens).toBe(256)
+    expect(maxTokens).toBeLessThan(paintBudget)
+    expect(maxTokens).toBeGreaterThan(0)
   })
 })
