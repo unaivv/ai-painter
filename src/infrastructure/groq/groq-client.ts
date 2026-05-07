@@ -1,6 +1,6 @@
 import Groq from 'groq-sdk'
 
-const MODEL = 'deepseek-r1-distill-llama-70b' as const
+const MODEL = 'qwen/qwen3-32b' as const
 
 const client = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY, dangerouslyAllowBrowser: true })
 
