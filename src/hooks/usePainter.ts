@@ -5,13 +5,13 @@ import { PICO8_PALETTE } from '@/domain/palette/pico8'
 import type { CanvasGrid } from '@/domain/canvas/CanvasGrid'
 import type { GridSize } from '@/domain/canvas/PixelInstruction'
 
-interface PainterState {
+type PainterState = {
   grid: CanvasGrid
   loading: boolean
   error: string | null
 }
 
-interface PainterActions {
+type PainterActions = {
   paintPrompt: (prompt: string) => Promise<void>
   reset: (size: GridSize) => void
 }
