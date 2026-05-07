@@ -25,7 +25,7 @@ export const usePainter = (initialSize: GridSize = 16): PainterState & PainterAc
     setLoading(true)
     setError(null)
     try {
-      const result = await paint(prompt, grid.width as GridSize, PICO8_PALETTE)
+      const result = await paint(prompt, grid.width, PICO8_PALETTE)
       if (result.ok) {
         setGrid(prev => applyInstructions(prev, result.value))
       } else {
