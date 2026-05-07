@@ -28,7 +28,7 @@ export const usePainter = (initialSize: GridSize = 16): PainterState & PainterAc
     try {
       const result = await paint(prompt, grid.width, complete)
       if (result.ok) {
-        setGrid(prev => applyInstructions(prev, result.value))
+        setGrid(prev => applyInstructions(createGrid(prev.width), result.value))
       } else {
         setError(result.error)
       }
