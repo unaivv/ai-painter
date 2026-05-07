@@ -52,7 +52,8 @@ export const paint = async (
   complete: CompleteFn,
 ): Promise<Result<PixelInstruction[]>> => {
   try {
-    const raw = await complete(buildSystemPrompt(size), prompt)
+    const userMessage = `Draw: ${prompt}\n\nOutput the ${size}×${size} grid now. Nothing else.`
+    const raw = await complete(buildSystemPrompt(size), userMessage)
     return parseAsciiGrid(raw, PICO8_CODES)
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'

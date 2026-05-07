@@ -9,8 +9,9 @@ export const complete = async (system: string, user: string): Promise<string> =>
     model: MODEL,
     messages: [
       { role: 'system', content: system },
-      { role: 'user', content: `/no_think ${user}` },
+      { role: 'user', content: user },
     ],
+    max_tokens: 8192,
   })
   return response.choices[0]?.message?.content ?? ''
 }
