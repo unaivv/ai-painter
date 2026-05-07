@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseInstructions } from './parseInstructions'
+import { parseInstructions } from './parse-instructions'
 
 describe('parseInstructions', () => {
   it('parses a valid JSON array', () => {

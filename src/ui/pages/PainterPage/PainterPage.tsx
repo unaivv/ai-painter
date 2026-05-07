@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { usePainter } from '@/hooks/usePainter'
+
+import { usePainter } from '@/hooks/use-painter'
 import { PixelCanvas } from '@/ui/organisms/PixelCanvas/PixelCanvas'
 import { ChatPanel } from '@/ui/organisms/ChatPanel/ChatPanel'
 import { GridSizeSelector } from '@/ui/molecules/GridSizeSelector/GridSizeSelector'
 import type { GridSize } from '@/domain/canvas/PixelInstruction'
 
-export const PainterPage = () => {
+export const PainterPage = (): JSX.Element => {
   const [size, setSize] = useState<GridSize>(16)
   const { grid, loading, error, paintPrompt, reset } = usePainter(size)
 
-  const handleSizeChange = (newSize: GridSize) => {
+  const handleSizeChange = (newSize: GridSize): void => {
     setSize(newSize)
     reset(newSize)
   }
