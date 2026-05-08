@@ -75,4 +75,15 @@ describe('usePainter — paintPrompt', () => {
     expect(result.current.grid).toBe(gridBefore)
     expect(result.current.error).toBe('bad delta')
   })
+
+  it('clearError sets error back to null', async () => {
+    instructMock.mockResolvedValueOnce({ ok: false, error: 'oops' })
+
+    const { result } = renderHook(() => usePainter(16))
+    await act(async () => { await result.current.paintPrompt('x') })
+    expect(result.current.error).toBe('oops')
+
+    act(() => { result.current.clearError() })
+    expect(result.current.error).toBeNull()
+  })
 })

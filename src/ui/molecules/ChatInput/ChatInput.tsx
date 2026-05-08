@@ -1,11 +1,36 @@
 import { useState } from 'react'
 
-import './ChatInput.css'
+import styles from './ChatInput.module.css'
 
 type Props = {
   onSubmit: (prompt: string) => void
   loading: boolean
 }
+
+type ViewProps = {
+  value: string
+  loading: boolean
+  onChange: (v: string) => void
+  onSubmit: () => void
+  onKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
+}
+
+const ChatInputView = ({ value, loading, onChange, onSubmit, onKeyDown }: ViewProps): JSX.Element => (
+  <div className={styles.chatInput}>
+    <textarea
+      className={styles.textarea}
+      value={value}
+      onChange={e => onChange(e.target.value)}
+      onKeyDown={onKeyDown}
+      disabled={loading}
+      placeholder="Describe what to paint… (Enter to send, Shift+Enter for newline)"
+      rows={1}
+    />
+    <button className={styles.button} onClick={onSubmit} disabled={loading}>
+      {loading ? 'Painting…' : 'Paint'}
+    </button>
+  </div>
+)
 
 export const ChatInput = ({ onSubmit, loading }: Props): JSX.Element => {
   const [value, setValue] = useState('')
@@ -17,23 +42,11 @@ export const ChatInput = ({ onSubmit, loading }: Props): JSX.Element => {
   }
 
   const handleKey = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleSubmit()
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSubmit()
+    }
   }
 
-  return (
-    <div className="chat-input">
-      <textarea
-        className="chat-input__textarea"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-        onKeyDown={handleKey}
-        disabled={loading}
-        placeholder="Describe what to paint..."
-        rows={2}
-      />
-      <button className="chat-input__button" onClick={handleSubmit} disabled={loading}>
-        {loading ? 'Painting…' : 'Paint'}
-      </button>
-    </div>
-  )
+  return <ChatInputView value={value} loading={loading} onChange={setValue} onSubmit={handleSubmit} onKeyDown={handleKey} />
 }
