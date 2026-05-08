@@ -1,0 +1,39 @@
+.panel {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 8px;
+  padding: 8px 10px 8px 12px;
+  color: #ef4444;
+  font-size: 14px;
+  text-align: left;
+}
+
+.error span {
+  flex: 1;
+}
+
+.dismiss {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 2px;
+  opacity: 0.7;
+}
+
+.dismiss:hover {
+  opacity: 1;
+}

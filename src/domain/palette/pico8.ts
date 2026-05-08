@@ -16,3 +16,22 @@ export const PICO8_PALETTE: readonly string[] = [
   '#ff77a8',
   '#ffccaa',
 ] as const
+
+export const PICO8_CODES: Record<string, string> = {
+  K: '#000000',
+  N: '#1d2b53',
+  M: '#7e2553',
+  G: '#008751',
+  R: '#ab5236',
+  D: '#5f574f',
+  L: '#c2c3c7',
+  W: '#fff1e8',
+  E: '#ff004d',
+  O: '#ffa300',
+  Y: '#ffec27',
+  Z: '#00e436',
+  B: '#29adff',
+  V: '#83769c',
+  P: '#ff77a8',
+  T: '#ffccaa',
+}
