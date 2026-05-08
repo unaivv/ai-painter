@@ -1,0 +1,149 @@
+<svg width="860" height="220" viewBox="0 0 860 220" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="860" height="220" rx="14" fill="#0f1117"/>
+  <rect x="1" y="1" width="858" height="218" rx="13" fill="none" stroke="#29adff" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Pixel art canvas: 16x12 grid, cell=11px, top-left at (21,21) -->
+
+  <!-- Row 0: all sky (#1d2b53) -->
+  <rect x="21" y="21" width="176" height="11" fill="#1d2b53"/>
+
+  <!-- Row 1: sky with ray -->
+  <rect x="21" y="32" width="33" height="11" fill="#1d2b53"/>
+  <rect x="54" y="32" width="11" height="11" fill="#ffec27"/>
+  <rect x="65" y="32" width="11" height="11" fill="#1d2b53"/>
+  <rect x="76" y="32" width="33" height="11" fill="#ffa300"/>
+  <rect x="109" y="32" width="11" height="11" fill="#1d2b53"/>
+  <rect x="120" y="32" width="11" height="11" fill="#ffec27"/>
+  <rect x="131" y="32" width="66" height="11" fill="#1d2b53"/>
+
+  <!-- Row 2: sun halo -->
+  <rect x="21" y="43" width="44" height="11" fill="#1d2b53"/>
+  <rect x="65" y="43" width="11" height="11" fill="#ffa300"/>
+  <rect x="76" y="43" width="33" height="11" fill="#ffec27"/>
+  <rect x="109" y="43" width="11" height="11" fill="#ffa300"/>
+  <rect x="120" y="43" width="77" height="11" fill="#1d2b53"/>
+
+  <!-- Row 3: sun body -->
+  <rect x="21" y="54" width="11" height="11" fill="#1d2b53"/>
+  <rect x="32" y="54" width="11" height="11" fill="#ffec27"/>
+  <rect x="43" y="54" width="11" height="11" fill="#1d2b53"/>
+  <rect x="54" y="54" width="11" height="11" fill="#ffa300"/>
+  <rect x="65" y="54" width="22" height="11" fill="#ffec27"/>
+  <rect x="87" y="54" width="11" height="11" fill="#fff1e8"/>
+  <rect x="98" y="54" width="22" height="11" fill="#ffec27"/>
+  <rect x="120" y="54" width="11" height="11" fill="#ffa300"/>
+  <rect x="131" y="54" width="11" height="11" fill="#1d2b53"/>
+  <rect x="142" y="54" width="11" height="11" fill="#ffec27"/>
+  <rect x="153" y="54" width="44" height="11" fill="#1d2b53"/>
+
+  <!-- Row 4 -->
+  <rect x="21" y="65" width="22" height="11" fill="#1d2b53"/>
+  <rect x="43" y="65" width="11" height="11" fill="#ffa300"/>
+  <rect x="54" y="65" width="11" height="11" fill="#ffec27"/>
+  <rect x="65" y="65" width="11" height="11" fill="#fff1e8"/>
+  <rect x="76" y="65" width="22" height="11" fill="#ffec27"/>
+  <rect x="98" y="65" width="11" height="11" fill="#fff1e8"/>
+  <rect x="109" y="65" width="11" height="11" fill="#ffec27"/>
+  <rect x="120" y="65" width="11" height="11" fill="#ffa300"/>
+  <rect x="131" y="65" width="44" height="11" fill="#1d2b53"/>
+  <rect x="186" y="65" width="11" height="11" fill="#ffec27"/>
+
+  <!-- Row 5 -->
+  <rect x="21" y="76" width="22" height="11" fill="#1d2b53"/>
+  <rect x="43" y="76" width="11" height="11" fill="#ffa300"/>
+  <rect x="54" y="76" width="22" height="11" fill="#ffec27"/>
+  <rect x="76" y="76" width="11" height="11" fill="#fff1e8"/>
+  <rect x="87" y="76" width="11" height="11" fill="#ffec27"/>
+  <rect x="98" y="76" width="11" height="11" fill="#fff1e8"/>
+  <rect x="109" y="76" width="11" height="11" fill="#ffec27"/>
+  <rect x="120" y="76" width="11" height="11" fill="#ffa300"/>
+  <rect x="131" y="76" width="66" height="11" fill="#1d2b53"/>
+
+  <!-- Row 6 -->
+  <rect x="21" y="87" width="11" height="11" fill="#1d2b53"/>
+  <rect x="32" y="87" width="11" height="11" fill="#ffec27"/>
+  <rect x="43" y="87" width="11" height="11" fill="#1d2b53"/>
+  <rect x="54" y="87" width="11" height="11" fill="#ffa300"/>
+  <rect x="65" y="87" width="55" height="11" fill="#ffec27"/>
+  <rect x="120" y="87" width="11" height="11" fill="#ffa300"/>
+  <rect x="131" y="87" width="11" height="11" fill="#1d2b53"/>
+  <rect x="142" y="87" width="11" height="11" fill="#ffec27"/>
+  <rect x="153" y="87" width="44" height="11" fill="#1d2b53"/>
+
+  <!-- Row 7 -->
+  <rect x="21" y="98" width="44" height="11" fill="#1d2b53"/>
+  <rect x="65" y="98" width="55" height="11" fill="#ffa300"/>
+  <rect x="120" y="98" width="77" height="11" fill="#1d2b53"/>
+
+  <!-- Rows 8-9: ground -->
+  <rect x="21" y="109" width="176" height="22" fill="#008751"/>
+
+  <!-- Rows 10-11: bright grass -->
+  <rect x="21" y="131" width="176" height="22" fill="#00e436" opacity="0.6"/>
+
+  <!-- Canvas border -->
+  <rect x="20" y="20" width="178" height="134" rx="4" fill="none" stroke="#29adff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Canvas label -->
+  <text x="109" y="168" font-family="monospace" font-size="10" fill="#5f574f" text-anchor="middle">16 × 12</text>
+
+  <!-- Vertical divider -->
+  <line x1="212" y1="18" x2="212" y2="202" stroke="#29adff" stroke-width="1" opacity="0.15"/>
+
+  <!-- Title -->
+  <text x="232" y="58" font-family="monospace" font-size="38" font-weight="bold" fill="#fff1e8">AI Painter</text>
+
+  <!-- Subtitle -->
+  <text x="234" y="80" font-family="monospace" font-size="13" fill="#83769c">Pixel art canvas · Groq + Llama 3.3-70b · Pico-8</text>
+
+  <!-- Stack badges -->
+  <rect x="234" y="94" width="66" height="20" rx="4" fill="#29adff" opacity="0.12"/>
+  <rect x="234" y="94" width="66" height="20" rx="4" fill="none" stroke="#29adff" stroke-width="1" opacity="0.5"/>
+  <text x="267" y="108" font-family="monospace" font-size="11" fill="#29adff" text-anchor="middle">React 19</text>
+
+  <rect x="308" y="94" width="82" height="20" rx="4" fill="#29adff" opacity="0.12"/>
+  <rect x="308" y="94" width="82" height="20" rx="4" fill="none" stroke="#29adff" stroke-width="1" opacity="0.5"/>
+  <text x="349" y="108" font-family="monospace" font-size="11" fill="#29adff" text-anchor="middle">TypeScript</text>
+
+  <rect x="398" y="94" width="44" height="20" rx="4" fill="#ff77a8" opacity="0.12"/>
+  <rect x="398" y="94" width="44" height="20" rx="4" fill="none" stroke="#ff77a8" stroke-width="1" opacity="0.5"/>
+  <text x="420" y="108" font-family="monospace" font-size="11" fill="#ff77a8" text-anchor="middle">Groq</text>
+
+  <rect x="450" y="94" width="50" height="20" rx="4" fill="#00e436" opacity="0.12"/>
+  <rect x="450" y="94" width="50" height="20" rx="4" fill="none" stroke="#00e436" stroke-width="1" opacity="0.5"/>
+  <text x="475" y="108" font-family="monospace" font-size="11" fill="#00e436" text-anchor="middle">Vitest</text>
+
+  <rect x="508" y="94" width="40" height="20" rx="4" fill="#ffa300" opacity="0.12"/>
+  <rect x="508" y="94" width="40" height="20" rx="4" fill="none" stroke="#ffa300" stroke-width="1" opacity="0.5"/>
+  <text x="528" y="108" font-family="monospace" font-size="11" fill="#ffa300" text-anchor="middle">Vite</text>
+
+  <!-- Features -->
+  <text x="234" y="138" font-family="monospace" font-size="12" fill="#c2c3c7">&#9658; Generate pixel art from a text prompt</text>
+  <text x="234" y="156" font-family="monospace" font-size="12" fill="#c2c3c7">&#9658; Edit existing canvas with natural language</text>
+  <text x="234" y="174" font-family="monospace" font-size="12" fill="#c2c3c7">&#9658; Manual painting with drag support</text>
+  <text x="234" y="192" font-family="monospace" font-size="12" fill="#c2c3c7">&#9658; 16-color Pico-8 palette · 16x16 to 64x64</text>
+
+  <!-- Palette dots: 2 rows of 8, top-right -->
+  <circle cx="700" cy="28" r="9" fill="#000000"/>
+  <circle cx="720" cy="28" r="9" fill="#1d2b53"/>
+  <circle cx="740" cy="28" r="9" fill="#7e2553"/>
+  <circle cx="760" cy="28" r="9" fill="#008751"/>
+  <circle cx="780" cy="28" r="9" fill="#ab5236"/>
+  <circle cx="800" cy="28" r="9" fill="#5f574f"/>
+  <circle cx="820" cy="28" r="9" fill="#c2c3c7"/>
+  <circle cx="840" cy="28" r="9" fill="#fff1e8"/>
+
+  <circle cx="700" cy="50" r="9" fill="#ff004d"/>
+  <circle cx="720" cy="50" r="9" fill="#ffa300"/>
+  <circle cx="740" cy="50" r="9" fill="#ffec27"/>
+  <circle cx="760" cy="50" r="9" fill="#00e436"/>
+  <circle cx="780" cy="50" r="9" fill="#29adff"/>
+  <circle cx="800" cy="50" r="9" fill="#83769c"/>
+  <circle cx="820" cy="50" r="9" fill="#ff77a8"/>
+  <circle cx="840" cy="50" r="9" fill="#ffccaa"/>
+
+  <text x="770" y="72" font-family="monospace" font-size="10" fill="#5f574f" text-anchor="middle">Pico-8 palette</text>
+
+</svg>
